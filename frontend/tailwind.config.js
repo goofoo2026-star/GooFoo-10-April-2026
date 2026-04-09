@@ -8,11 +8,26 @@ module.exports = {
   theme: {
   	extend: {
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '4px',
+  			md: '4px',
+  			sm: '2px',
+        none: '0px'
   		},
+      fontFamily: {
+        'bebas': ['Bebas Neue', 'sans-serif'],
+        'space': ['Space Mono', 'monospace'],
+        'nunito': ['Nunito Sans', 'sans-serif'],
+      },
   		colors: {
+        'goofoo-ink': '#1C0F00',
+        'dates-gold': '#F2B800',
+        'warm-cream': '#FFF8EE',
+        'off-white-grey': '#F0EDE8',
+        'classic-teal': '#1A8B7A',
+        'peanut-orange': '#C84B0A',
+        'badam-brown': '#3D1A00',
+        'terracotta': '#C04A1A',
+        'mid-brown': '#8B7355',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
