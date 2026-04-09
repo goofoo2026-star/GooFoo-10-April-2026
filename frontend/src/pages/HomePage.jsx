@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/goofoo/Header';
 import Footer from '../components/goofoo/Footer';
 import WhatsAppButton from '../components/goofoo/WhatsAppButton';
-import Hero from '../components/goofoo/Hero';
 import Marquee from '../components/goofoo/Marquee';
+import Hero from '../components/goofoo/Hero';
 import ProductsSection from '../components/goofoo/ProductsSection';
 import HonestySection from '../components/goofoo/HonestySection';
 import WhyDatesSection from '../components/goofoo/WhyDatesSection';
@@ -29,9 +29,9 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-warm-cream">
+      <Marquee />
       <Header cartItemsCount={cartItemsCount} />
       <Hero />
-      <Marquee />
       <ProductsSection />
       <HonestySection />
       <WhyDatesSection />

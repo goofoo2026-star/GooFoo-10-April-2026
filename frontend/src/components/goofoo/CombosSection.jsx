@@ -40,7 +40,7 @@ const CombosSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-bebas text-6xl md:text-7xl text-dates-gold mb-4 tracking-wide">
-            ORDER ONLINE. ONLY AS COMBOS.
+            COMBO PACKS
           </h2>
           <p className="font-nunito text-lg text-white/90">
             Mix of all three variants. Free delivery on all orders.

@@ -12,6 +12,16 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-goofoo-ink noise-overlay dot-grid overflow-hidden">
+      {/* Mascot background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: `url('https://customer-assets.emergentagent.com/job_chocolate-trio-pack/artifacts/7878k1tx_Gemini_Generated_Image_oe78uwoe78uwoe78.png')`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+
       {/* Radial glow */}
       <div className="absolute inset-0 radial-gold-glow"></div>
 
@@ -26,10 +36,10 @@ const Hero = () => {
           />
         </div>
 
-        {/* Tagline */}
+        {/* Tagline - both GOOD FOOD in gold */}
         <h1 className="font-bebas text-6xl md:text-8xl lg:text-9xl leading-none mb-6">
           <span className="block text-white">
-            JUST <span className="text-dates-gold">GOO</span> FOOD
+            JUST <span className="text-dates-gold">GOOD FOOD</span>
           </span>
           <span className="block text-white">
             & NOTHING TO <span className="text-dates-gold">HIDE</span>

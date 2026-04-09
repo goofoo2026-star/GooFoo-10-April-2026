@@ -7,21 +7,29 @@ import { useToast } from '../../hooks/use-toast';
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showIngredients, setShowIngredients] = useState(false);
+  const [selectedBundle, setSelectedBundle] = useState({ size: 7, price: product.pricePerBar * 7 });
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  // Calculate bundle prices
+  const bundles = [
+    { size: 7, price: product.pricePerBar * 7 },
+    { size: 15, price: product.pricePerBar * 15 }
+  ];
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
     const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItemIndex = cartItems.findIndex(item => item.productId === product.id);
+    const cartKey = `${product.id}-bundle-${selectedBundle.size}`;
+    const existingItemIndex = cartItems.findIndex(item => item.productId === cartKey);
 
     if (existingItemIndex > -1) {
       cartItems[existingItemIndex].quantity += 1;
     } else {
       cartItems.push({
-        productId: product.id,
-        productName: product.name,
-        price: product.pricePerBar,
+        productId: cartKey,
+        productName: `${product.name} (${selectedBundle.size} bars)`,
+        price: selectedBundle.price,
         quantity: 1,
         image: product.image,
         color: product.color
@@ -33,7 +41,7 @@ const ProductCard = ({ product }) => {
 
     toast({
       title: "Added to Cart!",
-      description: `${product.name} added to your bag.`,
+      description: `${product.name} (${selectedBundle.size} bars) added to your bag.`,
       duration: 2000,
     });
   };
@@ -56,7 +64,7 @@ const ProductCard = ({ product }) => {
     >
       {/* Card with variant color */}
       <div
-        className="relative overflow-hidden rounded-sm p-8 h-[500px] flex flex-col justify-between"
+        className="relative overflow-hidden rounded-sm p-8 min-h-[550px] flex flex-col justify-between"
         style={{ backgroundColor: product.color }}
       >
         {/* Ingredient count badge */}
@@ -83,9 +91,36 @@ const ProductCard = ({ product }) => {
           <p className="font-nunito text-white/90 text-sm mb-4">
             {product.description}
           </p>
+
+          {/* Bundle selection */}
+          <div className="mb-4">
+            <label className="font-space text-xs uppercase tracking-widest text-white/70 mb-2 block">
+              Bundle Size:
+            </label>
+            <div className="flex gap-2">
+              {bundles.map((bundle) => (
+                <button
+                  key={bundle.size}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedBundle(bundle);
+                  }}
+                  className={`flex-1 px-3 py-2 rounded-sm text-sm font-bebas transition-all duration-200 ${
+                    selectedBundle.size === bundle.size
+                      ? 'bg-dates-gold text-goofoo-ink shadow-md'
+                      : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
+                >
+                  {bundle.size} Bars
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Price */}
           <div className="flex items-baseline gap-2 mb-4">
-            <span className="font-bebas text-3xl text-white">₹{product.mrp}</span>
-            <span className="font-space text-xs text-white/70 uppercase">per bar</span>
+            <span className="font-bebas text-3xl text-white">₹{selectedBundle.price}</span>
+            <span className="font-space text-xs text-white/70 uppercase">(₹{product.pricePerBar}/bar)</span>
           </div>
 
           {/* Add to cart button */}

@@ -13,7 +13,7 @@ const Marquee = () => {
 
   return (
     <section className="bg-dates-gold py-4 overflow-hidden">
-      <div className="flex whitespace-nowrap animate-marquee">
+      <div className="flex whitespace-nowrap" style={{ animation: 'marquee 20s linear infinite' }}>
         {/* First set */}
         {items.map((item, index) => (
           <React.Fragment key={`first-${index}`}>
