@@ -29,10 +29,10 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#1a3a52] to-[#2a4a62] text-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-700/20 rounded-full blur-3xl"></div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
@@ -51,7 +51,7 @@ const Newsletter = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:bg-white/20 focus:border-yellow-400 h-12"
+                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-yellow-400 h-12"
               />
               <Button
                 type="submit"
@@ -62,7 +62,7 @@ const Newsletter = () => {
             </div>
           </form>
 
-          <p className="text-sm text-white/60 mt-4">
+          <p className="text-sm text-white/70 mt-4">
             We respect your privacy. Unsubscribe anytime.
           </p>
         </div>

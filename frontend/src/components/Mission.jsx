@@ -4,12 +4,12 @@ import { Leaf, Heart, Award } from 'lucide-react';
 
 const Mission = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+    <section className="py-20 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
             <img
               src={`${missionContent.image}?auto=compress&cs=tinysrgb&w=800`}
               alt="Mission"
@@ -39,8 +39,8 @@ const Mission = () => {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-200 transition-colors">
-                  <Heart className="w-6 h-6 text-red-600" />
+                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                  <Heart className="w-6 h-6 text-orange-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Made with Love</h3>

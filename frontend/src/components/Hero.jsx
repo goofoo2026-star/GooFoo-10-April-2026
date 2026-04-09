@@ -26,7 +26,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight">
           <span className="block text-yellow-400 drop-shadow-2xl" style={{
-            textShadow: '4px 4px 8px rgba(0,0,0,0.8), 0 0 20px rgba(251, 191, 36, 0.5)'
+            textShadow: '4px 4px 8px rgba(0,0,0,0.8), 0 0 20px rgba(255, 193, 7, 0.6), 0 0 40px rgba(255, 112, 67, 0.3)'
           }}>
             {heroContent.title.split(' ')[0]}
           </span>
@@ -43,7 +43,10 @@ const Hero = () => {
         </p>
         <button
           onClick={scrollToProducts}
-          className="group bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center gap-2"
+          className="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center gap-2"
+          style={{
+            boxShadow: '0 10px 30px rgba(255, 193, 7, 0.3)'
+          }}
         >
           {heroContent.ctaText}
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

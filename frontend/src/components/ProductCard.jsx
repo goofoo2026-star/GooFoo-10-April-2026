@@ -15,7 +15,7 @@ const ProductCard = ({ product, onAddToCart }) => {
     >
       <CardContent className="p-0">
         {/* Product Image */}
-        <div className="relative h-72 overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50">
+        <div className="relative h-72 overflow-hidden bg-gradient-to-br from-orange-50 to-yellow-50">
           <img
             src={`${isHovered ? product.hoverImage : product.image}?auto=compress&cs=tinysrgb&w=600`}
             alt={product.name}
@@ -39,7 +39,7 @@ const ProductCard = ({ product, onAddToCart }) => {
                   onClick={() => setSelectedBundle(bundle)}
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                     selectedBundle.size === bundle.size
-                      ? 'bg-yellow-400 text-black shadow-md'
+                      ? 'bg-gradient-to-r from-yellow-400 to-orange-400 text-black shadow-md'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -62,7 +62,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           {/* Add to Cart Button */}
           <Button
             onClick={() => onAddToCart(product, selectedBundle)}
-            className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 group"
+            className="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-black font-bold py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 group"
           >
             <ShoppingCart className="w-5 h-5 group-hover:animate-bounce" />
             ADD TO BAG
