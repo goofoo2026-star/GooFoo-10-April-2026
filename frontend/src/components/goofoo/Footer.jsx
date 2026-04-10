@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-goofoo-ink text-white noise-overlay">
+    <footer className="noise-overlay" style={{ background: '#1C0F00' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Logo and Tagline */}
         <div className="text-center mb-12">
@@ -13,54 +13,39 @@ const Footer = () => {
             alt="GOOFOO"
             className="h-20 w-auto mx-auto mb-6"
           />
-          <p className="font-space text-sm uppercase tracking-widest text-dates-gold">
-            Just Goo Food & Nothing to Hide
+          <p className="font-space text-[10px] uppercase tracking-[0.16em]" style={{ color: 'rgba(242,184,0,0.6)' }}>
+            JUST GOO FOOD & NOTHING TO HIDE
           </p>
         </div>
 
         {/* Navigation Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="font-bebas text-xl text-dates-gold mb-4 tracking-wider">Shop</h3>
+            <h3 className="font-space text-[10px] uppercase tracking-wider mb-4" style={{ color: '#F2B800' }}>Shop</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/shop" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <Link to="/shop" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   All Products
                 </Link>
               </li>
               <li>
-                <Link to="/combos" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <Link to="/combos" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   Combos
-                </Link>
-              </li>
-              <li>
-                <Link to="/product/classic-chocolate" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Classic Chocolate
-                </Link>
-              </li>
-              <li>
-                <Link to="/product/peanut-chocolate" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Peanut Chocolate
-                </Link>
-              </li>
-              <li>
-                <Link to="/product/badam-chocolate" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Badam Chocolate
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-bebas text-xl text-dates-gold mb-4 tracking-wider">About</h3>
+            <h3 className="font-space text-[10px] uppercase tracking-wider mb-4" style={{ color: '#F2B800' }}>About</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/our-story" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <Link to="/our-story" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   Our Story
                 </Link>
               </li>
               <li>
-                <Link to="/gifting" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <Link to="/gifting" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   Corporate Gifting
                 </Link>
               </li>
@@ -68,20 +53,15 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-bebas text-xl text-dates-gold mb-4 tracking-wider">Support</h3>
+            <h3 className="font-space text-[10px] uppercase tracking-wider mb-4" style={{ color: '#F2B800' }}>Support</h3>
             <ul className="space-y-2">
               <li>
-                <a href="tel:+919876543210" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <a href="tel:+919876543210" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   Call Us
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <Link to="/shipping" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
+                <Link to="/shipping" className="font-space text-[10px] transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
                   Shipping Info
                 </Link>
               </li>
@@ -89,62 +69,37 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-bebas text-xl text-dates-gold mb-4 tracking-wider">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link to="/returns" className="font-nunito text-sm text-white/70 hover:text-dates-gold transition-smooth">
-                  Returns & Refunds
-                </Link>
-              </li>
-            </ul>
+            <h3 className="font-space text-[10px] uppercase tracking-wider mb-4" style={{ color: '#F2B800' }}>Social</h3>
+            <div className="flex gap-4">
+              <a href="https://instagram.com/goofoo" target="_blank" rel="noopener noreferrer" className="transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://youtube.com/goofoo" target="_blank" rel="noopener noreferrer" className="transition-smooth" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-4 py-2 rounded-[2px] font-space text-[9px] uppercase tracking-wider transition-smooth"
+              style={{ background: '#25D366', color: '#FFFFFF' }}
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-6 mb-8">
-          <a
-            href="https://instagram.com/goofoo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 bg-white/10 hover:bg-dates-gold hover:text-goofoo-ink rounded-sm flex items-center justify-center transition-smooth"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
-          <a
-            href="https://youtube.com/goofoo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 bg-white/10 hover:bg-dates-gold hover:text-goofoo-ink rounded-sm flex items-center justify-center transition-smooth"
-          >
-            <Youtube className="w-5 h-5" />
-          </a>
-          <a
-            href="https://wa.me/919876543210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 bg-white/10 hover:bg-dates-gold hover:text-goofoo-ink rounded-sm flex items-center justify-center transition-smooth"
-          >
-            <MessageCircle className="w-5 h-5" />
-          </a>
-        </div>
+        {/* Divider */}
+        <div className="mb-8" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}></div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 text-center">
-          <p className="font-space text-xs text-white/50 uppercase tracking-widest mb-2">
-            Just Goo Food & Nothing to Hide
+        <div className="text-center">
+          <p className="font-space text-[9px] uppercase tracking-[0.12em] mb-2" style={{ color: 'rgba(242,184,0,0.3)' }}>
+            just goo food & nothing to hide
           </p>
-          <p className="font-nunito text-sm text-white/40">
-            © 2025 GOOFOO. Made in Chennai, India.
+          <p className="font-space text-[8px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+            © 2025 GOOFOO · Just Goo Food & Nothing to Hide · Chennai, India
           </p>
         </div>
       </div>

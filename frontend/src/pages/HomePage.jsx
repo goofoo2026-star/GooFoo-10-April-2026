@@ -24,21 +24,39 @@ const HomePage = () => {
     updateCartCount();
     window.addEventListener('storage', updateCartCount);
 
-    return () => window.removeEventListener('storage', updateCartCount);
+    // Scroll reveal animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    const elements = document.querySelectorAll('.animate-fade-up');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-warm-cream">
-      <Marquee />
+    <div className="min-h-screen" style={{ background: '#FFF8EE' }}>
       <Header cartItemsCount={cartItemsCount} />
-      <Hero />
-      <ProductsSection />
-      <HonestySection />
-      <WhyDatesSection />
-      <CombosSection />
-      <SocialProofSection />
-      <BrandStorySection />
-      <Footer />
+      <Hero /> {/* #1C0F00 dark */}
+      <Marquee /> {/* #F2B800 gold */}
+      <ProductsSection /> {/* #FFF8EE cream */}
+      <HonestySection /> {/* #1C0F00 dark */}
+      <WhyDatesSection /> {/* #F0EDE8 grey */}
+      <CombosSection /> {/* #1C0F00 dark */}
+      <SocialProofSection /> {/* #F0EDE8 grey */}
+      <BrandStorySection /> {/* #FFF8EE cream */}
+      <Footer /> {/* #1C0F00 dark */}
       <WhatsAppButton />
     </div>
   );

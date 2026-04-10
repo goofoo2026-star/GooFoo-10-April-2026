@@ -9,7 +9,7 @@ module.exports = {
   	extend: {
   		borderRadius: {
   			lg: '4px',
-  			md: '4px',
+  			md: '2px',
   			sm: '2px',
         none: '0px'
   		},
@@ -19,15 +19,15 @@ module.exports = {
         'nunito': ['Nunito Sans', 'sans-serif'],
       },
   		colors: {
-        'goofoo-ink': '#1C0F00',
-        'dates-gold': '#F2B800',
-        'warm-cream': '#FFF8EE',
-        'off-white-grey': '#F0EDE8',
-        'classic-teal': '#1A8B7A',
-        'peanut-orange': '#C84B0A',
-        'badam-brown': '#3D1A00',
+        'ink': '#1C0F00',
+        'cream': '#FFF8EE',
+        'gold': '#F2B800',
         'terracotta': '#C04A1A',
-        'mid-brown': '#8B7355',
+        'teal': '#1A8B7A',
+        'orange': '#C84B0A',
+        'brown': '#3D1A00',
+        'grey': '#F0EDE8',
+        'mid': '#8B7355',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

@@ -12,24 +12,57 @@ const Marquee = () => {
   ];
 
   return (
-    <section className="bg-dates-gold py-4 overflow-hidden">
-      <div className="flex whitespace-nowrap" style={{ animation: 'marquee 20s linear infinite' }}>
+    <section className="bg-gold py-0 overflow-hidden" style={{ background: '#F2B800' }}>
+      <div 
+        className="flex whitespace-nowrap items-center" 
+        style={{ animation: 'marquee 16s linear infinite' }}
+      >
         {/* First set */}
         {items.map((item, index) => (
           <React.Fragment key={`first-${index}`}>
-            <span className="font-bebas text-2xl md:text-3xl text-goofoo-ink px-8">
+            <span 
+              className="font-bebas px-8" 
+              style={{ 
+                fontSize: 'clamp(36px, 5vw, 56px)',
+                color: '#1C0F00',
+                lineHeight: '1.2'
+              }}
+            >
               {item}
             </span>
-            <span className="text-terracotta text-2xl md:text-3xl">·</span>
+            <div 
+              className="flex-shrink-0 rounded-full" 
+              style={{ 
+                width: '10px', 
+                height: '10px', 
+                background: '#C04A1A',
+                margin: '0 16px'
+              }}
+            ></div>
           </React.Fragment>
-        ))}
+        ))  }
         {/* Second set for seamless loop */}
         {items.map((item, index) => (
           <React.Fragment key={`second-${index}`}>
-            <span className="font-bebas text-2xl md:text-3xl text-goofoo-ink px-8">
+            <span 
+              className="font-bebas px-8" 
+              style={{ 
+                fontSize: 'clamp(36px, 5vw, 56px)',
+                color: '#1C0F00',
+                lineHeight: '1.2'
+              }}
+            >
               {item}
             </span>
-            <span className="text-terracotta text-2xl md:text-3xl">·</span>
+            <div 
+              className="flex-shrink-0 rounded-full" 
+              style={{ 
+                width: '10px', 
+                height: '10px', 
+                background: '#C04A1A',
+                margin: '0 16px'
+              }}
+            ></div>
           </React.Fragment>
         ))}
       </div>

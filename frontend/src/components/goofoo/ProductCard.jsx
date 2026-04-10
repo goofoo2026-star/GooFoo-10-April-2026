@@ -1,78 +1,79 @@
 import React, { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { GoldButton } from './Buttons';
 import { useToast } from '../../hooks/use-toast';
 
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showIngredients, setShowIngredients] = useState(false);
-  const [selectedBundle, setSelectedBundle] = useState({ size: 7, price: product.pricePerBar * 7 });
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Calculate bundle prices
-  const bundles = [
-    { size: 7, price: product.pricePerBar * 7 },
-    { size: 15, price: product.pricePerBar * 15 }
-  ];
-
   const handleAddToCart = (e) => {
     e.stopPropagation();
+    
     const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
-    const cartKey = `${product.id}-bundle-${selectedBundle.size}`;
-    const existingItemIndex = cartItems.findIndex(item => item.productId === cartKey);
+    const existingItemIndex = cartItems.findIndex(item => item.productId === product.id);
 
     if (existingItemIndex > -1) {
       cartItems[existingItemIndex].quantity += 1;
     } else {
       cartItems.push({
-        productId: cartKey,
-        productName: `${product.name} (${selectedBundle.size} bars)`,
-        price: selectedBundle.price,
+        productId: product.id,
+        productName: product.name,
+        price: product.pricePerBar,
         quantity: 1,
         image: product.image,
-        color: product.color
-      });
-    }
+        color: product.color,
+        variant: product.variant
+      });}
 
     localStorage.setItem('cart', JSON.stringify(cartItems));
     window.dispatchEvent(new Event('storage'));
 
+    // Trigger cart bounce animation
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+      cartIcon.classList.add('animate-cart-bounce');
+      setTimeout(() => cartIcon.classList.remove('animate-cart-bounce'), 300);
+    }
+
     toast({
-      title: "Added to Cart!",
-      description: `${product.name} (${selectedBundle.size} bars) added to your bag.`,
-      duration: 2000,
+      title: `${product.name} · ${product.variant}`,
+      description: "Added to cart",
+      duration: 2500,
     });
   };
 
   return (
     <div
-      className="group cursor-pointer transition-smooth hover:-translate-y-2"
+      className="group cursor-pointer transition-card"
       style={{
-        boxShadow: isHovered ? '0 8px 32px rgba(28,15,0,0.12)' : 'none'
+        boxShadow: isHovered ? '0 16px 40px rgba(0,0,0,0.35)' : 'none',
+        transform: isHovered ? 'translateY(-6px)' : 'translateY(0)'
       }}
-      onMouseEnter={() => {
-        setIsHovered(true);
-        setShowIngredients(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setShowIngredients(false);
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={() => navigate(`/product/${product.slug}`)}
     >
-      {/* Card with variant color */}
+      {/* Card with exact variant color */}
       <div
-        className="relative overflow-hidden rounded-sm p-8 min-h-[550px] flex flex-col justify-between"
+        className="relative overflow-hidden rounded-[4px] p-8 min-h-[520px] flex flex-col"
         style={{ backgroundColor: product.color }}
       >
-        {/* Ingredient count badge */}
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-sm">
-          <span className="font-space text-xs text-goofoo-ink font-bold uppercase tracking-wider">
+        {/* Ingredient count badge - top right */}
+        <div 
+          className="absolute top-4 right-4 px-3 py-1.5 rounded-[2px]" 
+          style={{ background: '#1C0F00' }}
+        >
+          <span className="font-space text-[9px] uppercase tracking-[0.08em]" style={{ color: '#F2B800' }}>
             {product.ingredientCount} ingredients
           </span>
         </div>
+
+        {/* Product name - gold Bebas Neue at top */}
+        <h3 className="font-bebas text-5xl tracking-wide mb-4" style={{ color: '#F2B800' }}>
+          {product.name}
+        </h3>
 
         {/* Product image */}
         <div className="flex-1 flex items-center justify-center mb-6">
@@ -83,67 +84,35 @@ const ProductCard = ({ product }) => {
           />
         </div>
 
-        {/* Product info */}
-        <div>
-          <h3 className="font-bebas text-4xl text-dates-gold mb-2 tracking-wide">
-            {product.name}
-          </h3>
-          <p className="font-nunito text-white/90 text-sm mb-4">
-            {product.description}
+        {/* Ingredient list on card */}
+        <div className="mb-6">
+          <p className="font-space text-[11px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            {product.ingredients.join(', ')}.
           </p>
-
-          {/* Bundle selection */}
-          <div className="mb-4">
-            <label className="font-space text-xs uppercase tracking-widest text-white/70 mb-2 block">
-              Bundle Size:
-            </label>
-            <div className="flex gap-2">
-              {bundles.map((bundle) => (
-                <button
-                  key={bundle.size}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedBundle(bundle);
-                  }}
-                  className={`flex-1 px-3 py-2 rounded-sm text-sm font-bebas transition-all duration-200 ${
-                    selectedBundle.size === bundle.size
-                      ? 'bg-dates-gold text-goofoo-ink shadow-md'
-                      : 'bg-white/20 text-white hover:bg-white/30'
-                  }`}
-                >
-                  {bundle.size} Bars
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Price */}
-          <div className="flex items-baseline gap-2 mb-4">
-            <span className="font-bebas text-3xl text-white">₹{selectedBundle.price}</span>
-            <span className="font-space text-xs text-white/70 uppercase">(₹{product.pricePerBar}/bar)</span>
-          </div>
-
-          {/* Add to cart button */}
-          <button
-            onClick={handleAddToCart}
-            className="w-full bg-dates-gold hover:bg-white text-goofoo-ink font-bebas uppercase tracking-widest text-base px-6 py-3 rounded-sm transition-smooth flex items-center justify-center gap-2"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            Add to Cart
-          </button>
         </div>
-      </div>
 
-      {/* Ingredients list below card */}
-      <div
-        className={`mt-4 transition-all duration-300 ${showIngredients ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-      >
-        <p className="font-space text-xs uppercase tracking-widest text-mid-brown mb-2">
-          Full ingredient list:
-        </p>
-        <p className="font-space text-sm text-goofoo-ink">
-          {product.ingredients.join(', ')}.
-        </p>
+        {/* Price */}
+        <div className="mb-4">
+          <div className="font-bebas text-4xl" style={{ color: '#FFFFFF' }}>
+            \u20b9{product.pricePerBar}
+          </div>
+          <div className="font-space text-[9px] uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            per bar
+          </div>
+        </div>
+
+        {/* Add to cart button - full width at bottom */}
+        <button
+          onClick={handleAddToCart}
+          className="w-full font-bebas uppercase tracking-[0.1em] text-base px-6 py-3.5 rounded-[2px] transition-all duration-200 flex items-center justify-center gap-2"
+          style={{
+            background: '#F2B800',
+            color: '#1C0F00'
+          }}
+        >
+          <ShoppingCart className="w-5 h-5" />
+          ADD TO CART
+        </button>
       </div>
     </div>
   );

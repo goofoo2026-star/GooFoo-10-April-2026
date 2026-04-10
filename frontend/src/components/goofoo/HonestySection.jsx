@@ -3,20 +3,27 @@ import { products } from '../../data/products';
 
 const HonestySection = () => {
   return (
-    <section className="py-24 bg-goofoo-ink noise-overlay">
+    <section className="py-24 noise-overlay" style={{ background: '#1C0F00' }}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-bebas text-6xl md:text-8xl text-dates-gold mb-6 tracking-wide">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="font-bebas tracking-wide mb-6" style={{ 
+            fontSize: 'clamp(44px, 7vw, 80px)',
+            color: '#F2B800'
+          }}>
             OUR FULL INGREDIENT LIST.
           </h2>
-          <p className="font-space text-sm md:text-base text-white uppercase tracking-widest">
+          <p className="font-space text-xs uppercase tracking-[0.08em]" style={{ color: '#FFFFFF' }}>
             We printed it in the largest font on purpose. Read it.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {products.map((product) => (
-            <div key={product.id} className="text-center">
+          {products.map((product, index) => (
+            <div 
+              key={product.id} 
+              className="text-center animate-fade-up"
+              style={{ transitionDelay: `${index * 0.1}s` }}
+            >
               {/* Variant color dot */}
               <div
                 className="w-4 h-4 rounded-full mx-auto mb-4"
@@ -24,16 +31,17 @@ const HonestySection = () => {
               ></div>
 
               {/* Product name */}
-              <h3 className="font-bebas text-3xl text-white mb-6 tracking-wide">
+              <h3 className="font-bebas text-3xl tracking-wide mb-6" style={{ color: '#FFFFFF' }}>
                 {product.name}
               </h3>
 
               {/* Ingredients - large and proud */}
               <div className="space-y-3">
-                {product.ingredients.map((ingredient, index) => (
+                {product.ingredients.map((ingredient, idx) => (
                   <p
-                    key={index}
-                    className="font-space text-base md:text-lg text-white leading-relaxed"
+                    key={idx}
+                    className="font-space text-lg leading-relaxed"
+                    style={{ color: '#FFFFFF' }}
                   >
                     {ingredient}
                   </p>
@@ -41,18 +49,25 @@ const HonestySection = () => {
               </div>
 
               {/* That's it */}
-              <p className="font-space text-sm text-white/60 mt-6 uppercase tracking-wider">
+              <p className="font-space text-sm mt-6 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 That's the whole list.
               </p>
             </div>
           ))}
         </div>
 
-        <div className="text-center">
-          <p className="font-nunito text-lg text-white/90 mb-6">
+        <div className="text-center animate-fade-up">
+          <p className="font-nunito text-lg mb-6 leading-[1.85]" style={{ color: 'rgba(255,255,255,0.9)' }}>
             Nothing to add because nothing belongs there.
           </p>
-          <button className="font-bebas uppercase tracking-widest text-base bg-transparent text-dates-gold border-2 border-dates-gold px-8 py-3 rounded-sm transition-smooth hover:bg-dates-gold hover:text-goofoo-ink">
+          <button 
+            className="font-bebas uppercase tracking-[0.1em] text-base px-8 py-3.5 rounded-[2px] transition-smooth"
+            style={{
+              background: 'transparent',
+              border: '1.5px solid #F2B800',
+              color: '#F2B800'
+            }}
+          >
             Compare it to theirs.
           </button>
         </div>
