@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Nunito+Sans:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* GOOFOO Brand Colors - EXACT */
-  --ink: #1C0F00;
-  --cream: #FFF8EE;
-  --gold: #F2B800;
+  /* Brand Colors */
+  --goofoo-ink: #1C0F00;
+  --dates-gold: #F2B800;
+  --warm-cream: #FFF8EE;
+  --off-white-grey: #F0EDE8;
+  --classic-teal: #1A8B7A;
+  --peanut-orange: #C84B0A;
+  --badam-brown: #3D1A00;
   --terracotta: #C04A1A;
-  --teal: #1A8B7A;
-  --orange: #C84B0A;
-  --brown: #3D1A00;
-  --grey: #F0EDE8;
-  --mid: #8B7355;
+  --mid-brown: #8B7355;
   --white: #FFFFFF;
 }
 
@@ -26,18 +26,19 @@
 
 body {
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--ink);
-  background: var(--cream);
+  color: var(--goofoo-ink);
+  background: var(--warm-cream);
 }
 
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Typography System */
+/* Typography */
 .font-bebas {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.02em;
@@ -51,11 +52,6 @@ html {
   font-family: 'Nunito Sans', sans-serif;
 }
 
-/* Remove all other font families */
-* {
-  font-family: inherit;
-}
-
 /* Noise texture overlay */
 .noise-overlay {
   position: relative;
@@ -65,20 +61,15 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-/* Dot grid pattern for hero */
+/* Dot grid pattern */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(242, 184, 0, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(242, 184, 0, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
-}
-
-/* Radial gold glow */
-.radial-gold-glow {
-  background: radial-gradient(ellipse at center, rgba(242, 184, 0, 0.08) 0%, transparent 70%);
 }
 
 /* Custom scrollbar */
@@ -88,11 +79,11 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--grey);
+  background: var(--off-white-grey);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
+  background: var(--dates-gold);
   border-radius: 4px;
 }
 
@@ -121,32 +112,17 @@ html {
   }
 }
 
-@keyframes cartBounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-}
-
 .animate-marquee {
-  animation: marquee 16s linear infinite;
+  animation: marquee 20s linear infinite;
 }
 
 .animate-fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  animation: fadeUp 0.6s ease forwards;
 }
 
-.animate-fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.animate-cart-bounce {
-  animation: cartBounce 0.3s ease;
+/* Transitions */
+.transition-smooth {
+  transition: all 0.2s ease;
 }
 
 /* Line clamp utilities */
@@ -164,11 +140,7 @@ html {
   overflow: hidden;
 }
 
-/* Transition utilities */
-.transition-smooth {
-  transition: all 0.2s ease;
-}
-
-.transition-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* Radial glow effect */
+.radial-gold-glow {
+  background: radial-gradient(circle at center, rgba(242, 184, 0, 0.2) 0%, transparent 70%);
 }
